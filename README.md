@@ -45,6 +45,24 @@ async function handleEvent(event) {
 
 ## Configure and publish
 
+The bucket key in the wrangler.toml indicates the “build” folder that Sites will deploy to Workers. 
+While many front-end application and static site generators use the folder public, `create-react-app` uses the folder `build`. So, we need to change the `bucket` key in wrangler.toml to `build`:
+
+```yaml
+wrangler.toml
+# ... previous wrangler config
+[site]
+bucket = "./build"
+entry-point = "workers-site"
+```
+
+With wrangler.toml configured, it’s time to build the project, and publish it to Workers. Run npm `run build` to tell create-react-app to build the site, and `wrangler publish` to deploy it to Workers:
+
+```bash
+npm run build
+
+wrangler publish
+```
 
 
 # Getting Started with Create React App
