@@ -11,7 +11,7 @@ Note: This project was bootstrapped with [Create React App](https://github.com/f
 
 ## Prerequisites
 
-This assumes you have already signed up for a Cloudflare Workers account. You need to do this to be able to publish your Workers on your own domain or a free workers.dev subdomain. Visit https://dash.cloudflare.com/sign-up/workers and the process will guide you through choosing a workers.dev subdomain and verifying your email address. There is [Workers Free plan](https://developers.cloudflare.com/workers/platform/limits#worker-limits) you can choose without any commitment.
+This assumes you have already signed up for a Cloudflare Workers account. You need to do this to be able to publish your Workers on your own domain or a free workers.dev subdomain. Visit https://dash.cloudflare.com/sign-up/workers and the process will guide you through choosing a workers.dev subdomain and verifying your email address. There is [Workers Free plan](https://developers.cloudflare.com/workers/platform/limits) you can choose without any commitment.
 
 Also you need to have installed Node.js and `npm` in your local computer. It is recommended to install it with a Node version manager like `nvm`, which puts the global `node_modules` in your home directory to eliminate permissions issues with `npm install -g`. 
 
