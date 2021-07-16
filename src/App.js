@@ -18,7 +18,7 @@ function Example() {
       <p>
         Hello, World!
 
-        I am a simple <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">React</a> app.
+        I am a simple serveless <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">React</a> app.
 
         I am running on <a className="App-link" href="https://developers.cloudflare.com/workers/get-started/guide" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>.
 
