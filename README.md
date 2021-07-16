@@ -80,7 +80,7 @@ and then
 
 `wrangler publish`
 
-The last command will upload your app (scripts and static files) and publish it to a url like this https://cf-react.webzein.workers.dev. 
+The last command will upload your app (scripts and static files) and publish it to a url like this https://cf-react.your-workers-subdomain.workers.dev. 
 
  Alternatively, to easily test your Worker while developing. you can run 
  
@@ -91,7 +91,7 @@ The last command will upload your app (scripts and static files) and publish it 
  `http://127.0.0.1:8787/`
 
 
-From then on, you can start developing your React app. I.e. edit src/App.js etc...
+From then on, you can start developing your React app. I.e. edit src/App.js, run npm run build and wrangler publish to update it...
 
 
 # Getting Started with Create React App
