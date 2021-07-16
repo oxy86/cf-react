@@ -1,0 +1,9 @@
+name = "cf-react"
+type = 'webpack'
+account_id = ''
+route = ''
+zone_id = ''
+usage_model = ''
+workers_dev = true
+target_type = "webpack"
+site = {bucket = "",entry-point = "workers-site"}
