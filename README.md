@@ -8,9 +8,16 @@ Note: This project was bootstrapped with [Create React App](https://github.com/f
 
 # Steps to reproduce this project
 
+
+## Prerequisites
+
+This assumes you have already signed up for a Cloudflare Workers account. You need to do this to be able to publish your Workers on your own domain or a free workers.dev subdomain. Visit https://dash.cloudflare.com/sign-up/workers and the process will guide you through choosing a workers.dev subdomain and verifying your email address.
+
+Also you need to have installed Node.js and `npm` in your local computer. It is recommended to install it with a Node version manager like `nvm`, which puts the global `node_modules` in your home directory to eliminate permissions issues with `npm install -g`. 
+
+
 ## Install wrangler and login
 
-This assumes you have already installed Node.js and `npm`. It is recommended to install it with a Node version manager like `nvm`, which puts the global `node_modules` in your home directory to eliminate permissions issues with `npm install -g`. 
 
 Next install the [wrangler](https://github.com/cloudflare/wrangler) CLI tool to be able to use Workers:
 
@@ -72,6 +79,8 @@ With wrangler.toml configured, it’s time to build the project, and publish it 
 and then
 
 `wrangler publish`
+
+The last command will upload your app (scripts and static files) and publish it to a url like this https://cf-react.webzein.workers.dev. 
 
  Alternatively, to easily test your Worker while developing. you can run 
  
