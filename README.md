@@ -5,19 +5,23 @@ Cloudflare Workers is a great platform to deploy static sites: the application w
 
 Note: This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-See video tutorial: https://www.youtube.com/watch?v=6YC3MgVwCGA
+See video tutorial by Cloudflare: https://www.youtube.com/watch?v=6YC3MgVwCGA
 
 
 # Steps to reproduce this project
 
-This assumes you have installed npm. It is recommended to install it with a Node version manager like `nvm`, which puts the global `node_modules` in your home directory to eliminate permissions issues with `npm install -g`. 
+This assumes you have installed `npm`. It is recommended to install it with a Node version manager like `nvm`, which puts the global `node_modules` in your home directory to eliminate permissions issues with `npm install -g`. 
 Next install the wrangler CLI tool to be able to use Workers:
 
 `npm i @cloudflare/wrangler -g`
 
-Then login:
+Now that Wrangler is installed, you'll need to give it an API Token for your Cloudflare account. Run the command `wrangler login` and Wrangler will ask to automatically open your web browser to log into your Cloudflare account.
 
-wrangler config
+Alternatively, if you have already created a Cloudflare API token, use this command to authenticate Wrangler with that Cloudflare API Token:
+
+`wrangler config`
+
+This is an interactive command that will prompt you for your API token (Note: Do not use a global API key)...
 
 ## Create a static site
 
@@ -27,11 +31,11 @@ The create-react-app will create a new project (i.e. `cf-react`), and include al
 
 ## Generate a project
 
- Enter the newly-created React project folder, and use the following command to generate a Workers Sites configuration for your project:
+ Enter the newly-created React project folder  (i.e. `cd cf-react`), and use this command to generate a Workers Sites configuration:
 
  `wrangler init --site`
 
-The init --site command will provide the scaffolding necessary to deploy your React application. For the majority of static sites, you shouldn’t need to change the Workers script: by default, the script will look at an incoming request, and will serve a corresponding asset from [Workers KV](https://www.cloudflare.com/products/workers-kv/) based on that route. For instance, if my static site is deployed at mystaticsite.com, requesting mystaticsite.com/about.html will look for a file in KV called about.html, and serve it back to the client. In addition, if the asset being returned from KV is cacheable, it will automatically be cached with Cloudflare’s CDN, making subsequent requests even faster.
+This will provide the scaffolding necessary to deploy the React application. For the majority of static sites, we do not need to change the Workers script: by default, the script will look at an incoming request, and will serve a corresponding asset from [Workers KV](https://www.cloudflare.com/products/workers-kv/) based on that route. For instance, if my static site is deployed at mystaticsite.com, requesting mystaticsite.com/about.html will look for a file in KV called about.html, and serve it back to the client. In addition, if the asset being returned from KV is cacheable, it will automatically be cached with Cloudflare’s CDN, making subsequent requests even faster.
 
 To serve a single page application, update workers-site/index.js with the following code to so that all html requests are pointed at your root index.html file.
 
@@ -45,15 +49,15 @@ async function handleEvent(event) {
 
 ## Configure and publish
 
-The bucket key in the wrangler.toml indicates the “build” folder that Sites will deploy to Workers. 
-While many front-end application and static site generators use the folder public, `create-react-app` uses the folder `build`. So, we need to change the `bucket` key in wrangler.toml to `build`:
+Edit wrangler.toml file and add your cloudflare Account Id in the key `account_id`. You may find this id on you Account Home (the screen you see after you login to Cloudflare) and then clicking Workers. It’s on the right hand side. 
+It is ok to leave that Account ID in a public repo, as no action can be taken on your behalf without a corresponding API Token / Key, which should always be secret.
+
+Also, there is a `bucket` key in the wrangler.toml that indicates the "build" folder that Sites will deploy to Workers. `create-react-app` uses a folder named `build`. So, we need to change the `bucket` key in wrangler.toml to `build`:
 
 ```yaml
 wrangler.toml
 # ... previous wrangler config
-[site]
-bucket = "./build"
-entry-point = "workers-site"
+site = {bucket = "./build", entry-point = "workers-site"}
 ```
 
 With wrangler.toml configured, it’s time to build the project, and publish it to Workers. Run npm `run build` to tell create-react-app to build the site, and `wrangler publish` to deploy it to Workers:
@@ -63,6 +67,17 @@ npm run build
 
 wrangler publish
 ```
+
+ Alternatively, to easily test your Worker while developing. you can run 
+ 
+ `wrangler dev` 
+ 
+ This command establishes a connection between `localhost` (your computer) and an edge server that operates your Worker in development. A cloudflared tunnel forwards all requests to the edge server, which continuously updates as your Worker code changes. This allows full access to Workers KV, Durable Objects, etc. You can see your app with your browser at: 
+
+ `http://127.0.0.1:8787/`
+
+
+From then on, you can start developing your React app. I.e. edit src/App.js and save to reload.
 
 
 # Getting Started with Create React App

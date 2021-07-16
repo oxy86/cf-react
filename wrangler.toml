@@ -1,6 +1,6 @@
 name = "cf-react"
 type = 'webpack'
-account_id = ''
+account_id = 'a111e576129b8a175d42798bbf8c0c56'
 route = ''
 zone_id = ''
 usage_model = ''
