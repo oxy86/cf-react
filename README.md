@@ -4,7 +4,9 @@ In this example project, we use [Wrangler](https://github.com/cloudflare/wrangle
 
 Cloudflare Workers is a great platform to deploy static sites: the application will be distributed to hundrends of locations around the world, and served directly from Cloudflare’s CDN at a server incredibly close to your users.
  
-To reproduce this project read my blog post [Serverless: How to create and serve a static React site directly from Cloudflare’s CDN using Workers](https://dimitris.apeiro.gr/2021/07/17/serverless-how-to-create-and-serve-a-static-react-site-directly-from-cloudflares-cdn-using-workers/)
+For a step-by-step tutorial to reproduce this project, read my blog post:
+
+[Serverless: How to create and serve a static React site directly from Cloudflare’s CDN using Workers](https://dimitris.apeiro.gr/2021/07/17/serverless-how-to-create-and-serve-a-static-react-site-directly-from-cloudflares-cdn-using-workers/)
 
 Alternatively, if you already have signed up for a CF Workers account, installed Node.js and the `wrangler` tool, you can just clone this repo in your local computer, edit `wrangler.toml` to update it your CF account id, then 
 
