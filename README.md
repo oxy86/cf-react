@@ -77,7 +77,7 @@ and then
  `http://127.0.0.1:8787/`
 
 
-From then on, you can start developing your React app. I.e. edit src/App.js and save to reload.
+From then on, you can start developing your React app. I.e. edit src/App.js etc...
 
 
 # Getting Started with Create React App
