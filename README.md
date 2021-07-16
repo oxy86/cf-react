@@ -11,7 +11,7 @@ See video tutorial by Cloudflare: https://www.youtube.com/watch?v=6YC3MgVwCGA
 # Steps to reproduce this project
 
 This assumes you have installed `npm`. It is recommended to install it with a Node version manager like `nvm`, which puts the global `node_modules` in your home directory to eliminate permissions issues with `npm install -g`. 
-Next install the wrangler CLI tool to be able to use Workers:
+Next install the [wrangler](https://github.com/cloudflare/wrangler) CLI tool to be able to use Workers:
 
 `npm i @cloudflare/wrangler -g`
 
@@ -62,11 +62,11 @@ site = {bucket = "./build", entry-point = "workers-site"}
 
 With wrangler.toml configured, it’s time to build the project, and publish it to Workers. Run npm `run build` to tell create-react-app to build the site, and `wrangler publish` to deploy it to Workers:
 
-```bash
-npm run build
+`npm run build`
 
-wrangler publish
-```
+and then
+
+`wrangler publish`
 
  Alternatively, to easily test your Worker while developing. you can run 
  
