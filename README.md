@@ -1,16 +1,17 @@
 # What is this
 
-In this example project, we use [Wrangler](https://github.com/cloudflare/wrangler) and [Cloudflare Workers](https://developers.cloudflare.com/workers/get-started/guide) to deploy and serve a static site developed in React JS. 
+In this example project, we use [Wrangler](https://github.com/cloudflare/wrangler) and [Cloudflare Workers](https://developers.cloudflare.com/workers/get-started/guide) to deploy and serve a static site developed in [React](https://reactjs.org/). 
 Cloudflare Workers is a great platform to deploy static sites: the application will be distributed to hundrends of locations around the world, and served directly from Cloudflare’s CDN at a server incredibly close to your users.
 
-Note: This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-See video tutorial by Cloudflare: https://www.youtube.com/watch?v=6YC3MgVwCGA
+Note: This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and most of this documentation comes from Cloudflare's [Deploy a React app with create‑react‑app](https://developers.cloudflare.com/workers/tutorials/deploy-a-react-app-with-create-react-app) tutorial. 
 
 
 # Steps to reproduce this project
 
-This assumes you have installed `npm`. It is recommended to install it with a Node version manager like `nvm`, which puts the global `node_modules` in your home directory to eliminate permissions issues with `npm install -g`. 
+## Install wrangler and login
+
+This assumes you have already installed Node.js and `npm`. It is recommended to install it with a Node version manager like `nvm`, which puts the global `node_modules` in your home directory to eliminate permissions issues with `npm install -g`. 
+
 Next install the [wrangler](https://github.com/cloudflare/wrangler) CLI tool to be able to use Workers:
 
 `npm i @cloudflare/wrangler -g`
@@ -23,15 +24,19 @@ Alternatively, if you have already created a Cloudflare API token, use this comm
 
 This is an interactive command that will prompt you for your API token (Note: Do not use a global API key)...
 
+If all goes well, you should be able to run the command `wrangler whoami` and see a message 
+
+ `You are logged in with an API Token, associated with the email 'yourname@example.com'! `
+
 ## Create a static site
+
+The first thing to do is to create a new project (i.e. `cf-react`) with create-react-app, which will include all the relevant dependencies needed to build the project. Use a command like this (changing the app name `cf-react` as you wish):
 
 `npx create-react-app cf-react`
 
-The create-react-app will create a new project (i.e. `cf-react`), and include all the relevant dependencies needed to build the project.
-
 ## Generate a project
 
- Enter the newly-created React project folder  (i.e. `cd cf-react`), and use this command to generate a Workers Sites configuration:
+Now, enter the newly-created React project folder  (i.e. `cd cf-react`), and use this command to generate a Workers Sites configuration:
 
  `wrangler init --site`
 
